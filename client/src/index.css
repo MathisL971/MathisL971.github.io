@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-7xl text-dark font-ruda;
+  }
+  h2 {
+    @apply text-4xl  text-black font-rajdhani;
+  }
+  h3 {
+    @apply text-xl text-black font-rajdhani;
+  }
+  p {
+    @apply text-base text-black font-rajdhani;
+  }
+  /* ... */
+}
