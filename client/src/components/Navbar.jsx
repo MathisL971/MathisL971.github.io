@@ -3,10 +3,10 @@ import Button from "./Button";
 import SocialMediaButton from "./SocialMediaButton";
 import "../index.css";
 
-import githubSVG from "../assets/github.svg";
-import figmaSVG from "../assets/figma-white.svg";
-import linkedInSVG from "../assets/linkedin-white.svg";
-import twitterSVG from "../assets/twitter.svg";
+import githubSVG from "../assets/icons/github-white.svg";
+import instaSvg from "../assets/icons/insta-white.svg";
+import twitterSVG from "../assets/icons/twitter-white.svg";
+import linkedInSVG from "../assets/icons/linkedin-white.svg";
 
 const Navbar = () => {
   return (
@@ -21,8 +21,8 @@ const Navbar = () => {
       <div className="flex flex-row space-x-4">
         <SocialMediaButton logoImage={linkedInSVG}></SocialMediaButton>
         <SocialMediaButton logoImage={twitterSVG}></SocialMediaButton>
+        <SocialMediaButton logoImage={instaSvg}></SocialMediaButton>
         <SocialMediaButton logoImage={githubSVG}></SocialMediaButton>
-        <SocialMediaButton logoImage={figmaSVG}></SocialMediaButton>
       </div>
     </div>
   );

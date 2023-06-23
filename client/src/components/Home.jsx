@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Home = () => {
   return (
-    <div className="flex flex-row gap-20 h-130 items-center justify-between">
+    <div className="flex flex-row gap-20 h-120 items-center justify-between">
       <div className="flex flex-col gap-8 justify-between">
         <h3>Web Designer / Software Developer</h3>
         <div>

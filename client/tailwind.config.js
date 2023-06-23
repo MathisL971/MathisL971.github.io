@@ -65,6 +65,7 @@ module.exports = {
       80: "20rem",
       96: "24rem",
       100: "28rem",
+      103: "29.5rem",
       105: "32rem",
       110: "34rem",
       120: "40rem",
@@ -74,7 +75,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "mtl-map":
-          "url('/Users/mathis/Sync/web_dev/fullstack/pern-portfolio-app/client/src/assets/mtl_map.png')",
+          "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/mtl_map.png')",
       },
     },
   },
