@@ -4,14 +4,19 @@
 
 @layer base {
   h1 {
-    @apply text-7xl text-dark font-ruda;
+    @apply text-7xl text-dark font-electrolize;
   }
   h2 {
     @apply text-4xl  text-black font-rajdhani;
   }
   h3 {
-    @apply text-xl text-black font-ruda;
+    @apply text-xl text-black font-rajdhani;
   }
+
+  h4 {
+    @apply text-lg text-black font-electrolize;
+  }
+
   p {
     @apply text-base text-black font-rajdhani;
   }

@@ -5,6 +5,8 @@ module.exports = {
     colors: {
       light: "#EBF2FA",
       neutral: "#427AA1",
+      sky: "#198FEE",
+      sea: "#002D70",
       dark: "#011627",
       white: "#FFFFFF",
       black: "#000000",
@@ -13,6 +15,7 @@ module.exports = {
       barlow: ["Barlow", "sans-serif"],
       rajdhani: ["Rajdhani", "sans-serif"],
       ruda: ["Ruda", "sans-serif"],
+      electrolize: ["Electrolize", "sans-serif"],
     },
     fontSize: {
       xs: ".75rem",
@@ -76,6 +79,8 @@ module.exports = {
       backgroundImage: {
         "mtl-map":
           "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/mtl_map.png')",
+        "blog-pic":
+          "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/article-pic.jpg')",
       },
     },
   },

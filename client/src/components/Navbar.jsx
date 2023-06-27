@@ -10,7 +10,7 @@ import linkedInSVG from "../assets/icons/linkedin-white.svg";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-row bg-white justify-between border-neutral border-2 rounded-full p-2 max-w-5xl gap-20">
+    <div className="flex flex-row bg-white justify-between border-sea border-2 rounded-full p-2 max-w-5xl gap-20">
       <div className="flex flex-row space-x-4">
         <Button text="Home"></Button>
         <Button text="About Me"></Button>

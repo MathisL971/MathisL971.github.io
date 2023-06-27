@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import "./index.css";
 import LatestProjects from "./components/LatestProjects";
+import LatestArticles from "./components/LatestArticles";
+import ContactBanner from "./components/ContactBanner";
 
 const App = () => {
   return (
@@ -10,6 +12,8 @@ const App = () => {
       <Navbar></Navbar>
       <Home></Home>
       <LatestProjects></LatestProjects>
+      <LatestArticles></LatestArticles>
+      <ContactBanner></ContactBanner>
     </div>
   );
 };
