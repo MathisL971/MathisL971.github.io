@@ -77,10 +77,10 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        // "mtl-map":
-        //   "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/mtl_map.png')",
-        // "blog-pic":
-        //   "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/article-pic.jpg')",
+        "mtl-map":
+          "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/mtl_map.png')",
+        "blog-pic":
+          "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/article-pic.jpg')",
       },
     },
   },

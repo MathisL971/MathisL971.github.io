@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.927bf374.css",
-    "main.js": "/static/js/main.a6a49dfb.js",
+    "main.css": "/static/css/main.57d94259.css",
+    "main.js": "/static/js/main.9cf6a495.js",
     "static/media/mre-home.png": "/static/media/mre-home.c81f93e9d8e99495657c.png",
     "static/media/acid-capitalist-home.png": "/static/media/acid-capitalist-home.2fa403da91c0b8156f62.png",
     "static/media/bazbar-home.png": "/static/media/bazbar-home.860c65f8707ead0e294d.png",
     "static/media/kirstys-home.png": "/static/media/kirstys-home.1d54e949ff5cafe85cd5.png",
+    "static/media/article-pic.jpg": "/static/media/article-pic.66bb4e81b5cabf47391f.jpg",
+    "static/media/mtl_map.png": "/static/media/mtl_map.99907bb4f7d47de08463.png",
     "static/media/wix-black.svg": "/static/media/wix-black.f83003bf07cd24e146bfcf51968655da.svg",
     "static/media/squarespace-black.svg": "/static/media/squarespace-black.687515a55fe5afbcca51147ea49833ff.svg",
     "index.html": "/index.html",
@@ -14,11 +16,11 @@
     "static/media/insta-white.svg": "/static/media/insta-white.b1a78aa83b02c15a875fb9bc28ce4399.svg",
     "static/media/twitter-white.svg": "/static/media/twitter-white.f13da2a761dad7f4a34d8eeb83590b95.svg",
     "static/media/linkedin-white.svg": "/static/media/linkedin-white.e4179ef3f604ae28e825d036a74d90ee.svg",
-    "main.927bf374.css.map": "/static/css/main.927bf374.css.map",
-    "main.a6a49dfb.js.map": "/static/js/main.a6a49dfb.js.map"
+    "main.57d94259.css.map": "/static/css/main.57d94259.css.map",
+    "main.9cf6a495.js.map": "/static/js/main.9cf6a495.js.map"
   },
   "entrypoints": [
-    "static/css/main.927bf374.css",
-    "static/js/main.a6a49dfb.js"
+    "static/css/main.57d94259.css",
+    "static/js/main.9cf6a495.js"
   ]
 }

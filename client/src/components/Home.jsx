@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <div className="flex flex-row gap-20 h-120 items-center justify-between">
       <div className="flex flex-col gap-8 justify-between">
-        <p className="text-xl">Web Designer / Software Developer</p>
+        <p className="text-xl">
+          Web Designer / Software Developer / Startup Operator
+        </p>
         <div>
           <h1>Hey,</h1>
           <h1>I'm Mathis!</h1>
