@@ -12,11 +12,11 @@ const Navbar = () => {
   return (
     <div className="flex flex-row bg-white justify-between border-sea border-2 rounded-full p-2 max-w-5xl gap-20">
       <div className="flex flex-row space-x-4">
-        <Button text="Home"></Button>
-        <Button text="About Me"></Button>
-        <Button text="My Work"></Button>
-        <Button text="My Blog"></Button>
-        <Button text="Contact Me"></Button>
+        <Button text="Home" styles={{}}></Button>
+        <Button text="About Me" styles={{ display: "none" }}></Button>
+        <Button text="My Work" styles={{ display: "none" }}></Button>
+        <Button text="My Blog" styles={{ display: "none" }}></Button>
+        <Button text="Contact Me" styles={{ display: "none" }}></Button>
       </div>
       <div className="flex flex-row space-x-4">
         <SocialMediaButton logoImage={linkedInSVG}></SocialMediaButton>

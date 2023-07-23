@@ -5,12 +5,12 @@ const Home = () => {
   return (
     <div className="flex flex-row gap-20 h-120 items-center justify-between">
       <div className="flex flex-col gap-8 justify-between">
-        <h3>Web Designer / Software Developer</h3>
+        <p className="text-xl">Web Designer / Software Developer</p>
         <div>
           <h1>Hey,</h1>
           <h1>I'm Mathis!</h1>
         </div>
-        <h2>Welcome to my corner of the internet.</h2>
+        <p className="text-4xl">Welcome to my corner of the internet.</p>
         <span className="flex flex-row gap-3">
           <Button text="About Me"></Button>
           <Button text="My Work"></Button>

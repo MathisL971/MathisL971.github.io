@@ -1,9 +1,9 @@
 import React from "react";
 
-const SocialMediaButton = ({ logoImage }) => {
+const TechnologyButton = ({ logoImage }) => {
   return (
     <button>
-      <div className="bg-sea rounded-full p-2.5 hover:bg-sky">
+      <div className="rounded-full p-1.5 w-8">
         {" "}
         <img alt="" src={logoImage} className="w-6"></img>
       </div>
@@ -11,4 +11,4 @@ const SocialMediaButton = ({ logoImage }) => {
   );
 };
 
-export default SocialMediaButton;
+export default TechnologyButton;
