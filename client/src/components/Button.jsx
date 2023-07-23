@@ -1,8 +1,6 @@
 import React from "react";
 
 const Button = ({ text, styles, disabled }) => {
-  console.log(disabled);
-
   if (disabled) {
     return (
       <button
