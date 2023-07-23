@@ -8,10 +8,10 @@ import githubSVG from "../assets/icons/github-white.svg";
 import squarespaceSVGBlack from "../assets/icons/squarespace-black.svg";
 import wixSVGBlack from "../assets/icons/wix-black.svg";
 
-import bazImage from "/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/bazbar-home.png";
-import acidImage from "/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/acid-capitalist-home.png";
-import recImage from "/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/mre-home.png";
-import villaImage from "/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/kirstys-home.png";
+import bazImage from "../assets/bazbar-home.png";
+import acidImage from "../assets/acid-capitalist-home.png";
+import recImage from "../assets/mre-home.png";
+import villaImage from "../assets/kirstys-home.png";
 
 const techLogos = {
   squarespace: {

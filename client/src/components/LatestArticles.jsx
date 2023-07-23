@@ -9,7 +9,7 @@ const LatestArticles = () => {
   return (
     <div className="flex flex-col py-12 w-full gap-10">
       <div className="flex flex-row justify-between">
-        <h2>/ Latest Articles</h2>
+        <h2>/ Latest Writings</h2>
         <div className="flex items-center">
           <IconButton text={"Medium"} logoImage={mediumSvg}></IconButton>
         </div>

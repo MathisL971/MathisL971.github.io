@@ -12,8 +12,8 @@ const Home = () => {
         </div>
         <p className="text-4xl">Welcome to my corner of the internet.</p>
         <span className="flex flex-row gap-3">
-          <Button text="About Me"></Button>
-          <Button text="My Work"></Button>
+          <Button text="About Me" disabled={true}></Button>
+          <Button text="My Work" disabled={true}></Button>
         </span>
       </div>
       <div className="flex flex-col rounded-full border-4 bg-cover bg-no-repeat w-105 h-105 items-end justify-between py-10 bg-mtl-map">
