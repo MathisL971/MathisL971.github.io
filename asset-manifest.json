@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.57d94259.css",
-    "main.js": "/static/js/main.9cf6a495.js",
+    "main.js": "/static/js/main.8658c572.js",
     "static/media/mre-home.png": "/static/media/mre-home.c81f93e9d8e99495657c.png",
     "static/media/acid-capitalist-home.png": "/static/media/acid-capitalist-home.2fa403da91c0b8156f62.png",
     "static/media/bazbar-home.png": "/static/media/bazbar-home.860c65f8707ead0e294d.png",
@@ -17,10 +17,10 @@
     "static/media/twitter-white.svg": "/static/media/twitter-white.f13da2a761dad7f4a34d8eeb83590b95.svg",
     "static/media/linkedin-white.svg": "/static/media/linkedin-white.e4179ef3f604ae28e825d036a74d90ee.svg",
     "main.57d94259.css.map": "/static/css/main.57d94259.css.map",
-    "main.9cf6a495.js.map": "/static/js/main.9cf6a495.js.map"
+    "main.8658c572.js.map": "/static/js/main.8658c572.js.map"
   },
   "entrypoints": [
     "static/css/main.57d94259.css",
-    "static/js/main.9cf6a495.js"
+    "static/js/main.8658c572.js"
   ]
 }
