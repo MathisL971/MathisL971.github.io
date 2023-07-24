@@ -14,7 +14,7 @@ const ContactBanner = () => {
         (lefrancmathis@gmail.com)
       </p>
       <div className="flex flex-row gap-3">
-        <Button text={"Contact Me"}></Button>
+        <Button text={"Contact Me"} disabled={true}></Button>
         <SocialMediaButton logoImage={linkedInSvg}></SocialMediaButton>
         <SocialMediaButton logoImage={twitterSvg}></SocialMediaButton>
       </div>

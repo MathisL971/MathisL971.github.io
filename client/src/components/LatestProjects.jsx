@@ -4,7 +4,6 @@ import ProjectCard from "./ProjectCard";
 import { useState, useEffect } from "react";
 import IconButton from "./IconButton";
 
-import githubSVG from "../assets/icons/github-white.svg";
 import squarespaceSVGBlack from "../assets/icons/squarespace-black.svg";
 import wixSVGBlack from "../assets/icons/wix-black.svg";
 
@@ -63,7 +62,7 @@ const LatestProjects = () => {
       <div className="flex flex-row justify-between">
         <h2>/ Latest Projects</h2>
         <div className="flex items-center">
-          <IconButton logoImage={githubSVG} text={"Github"}></IconButton>
+          <IconButton social={"github"}></IconButton>
         </div>
       </div>
       <div className="flex flex-row justify-between">
@@ -114,7 +113,7 @@ const LatestProjects = () => {
         </div>
       </div>
       <div className="flex flex-row justify-center">
-        <Button text={"See All Projects"}></Button>
+        <Button text={"See All Projects"} disabled={true}></Button>
       </div>
     </div>
   );

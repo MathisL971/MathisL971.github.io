@@ -1,8 +1,6 @@
 import React from "react";
 import Button from "./Button";
 import IconButton from "./IconButton";
-
-import mediumSvg from "../assets/icons/medium-white.svg";
 import ArticleCard from "./ArticleCard";
 
 const LatestArticles = () => {
@@ -11,7 +9,7 @@ const LatestArticles = () => {
       <div className="flex flex-row justify-between">
         <h2>/ Latest Writings</h2>
         <div className="flex items-center">
-          <IconButton text={"Medium"} logoImage={mediumSvg}></IconButton>
+          <IconButton social={"medium"}></IconButton>
         </div>
       </div>
       <div className="flex flex-row flex-nowrap gap-4 w-full">
@@ -23,7 +21,7 @@ const LatestArticles = () => {
         ></ArticleCard>
       </div>
       <div className="flex flex-row justify-center">
-        <Button text={"See All Articles"}></Button>
+        <Button text={"See All Articles"} disabled={true}></Button>
       </div>
     </div>
   );

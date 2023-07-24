@@ -8,7 +8,7 @@ import ContactBanner from "./components/ContactBanner";
 
 const App = () => {
   return (
-    <div className="flex flex-col gap-6 bg-light py-14 px-48 items-center">
+    <div className="flex flex-col gap-20 bg-light py-14 px-48 items-center">
       <Navbar></Navbar>
       <Home></Home>
       <LatestProjects></LatestProjects>
