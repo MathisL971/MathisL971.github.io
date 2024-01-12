@@ -3,11 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      light: "#EBF2FA",
+      light: "#CFEBFF",
       neutral: "#427AA1",
-      sky: "#198FEE",
+      sky: "#00D7A3",
       sea: "#002D70",
-      dark: "#011627",
+      dark: "#3CAE8B",
       white: "#FFFFFF",
       black: "#000000",
     },
@@ -16,6 +16,8 @@ module.exports = {
       rajdhani: ["Rajdhani", "sans-serif"],
       ruda: ["Ruda", "sans-serif"],
       electrolize: ["Electrolize", "sans-serif"],
+      handjet: ["Handjet", "sans-serif"],
+      rubik: ["Rubik Glitch", "sans-serif"],
     },
     fontSize: {
       xs: ".75rem",

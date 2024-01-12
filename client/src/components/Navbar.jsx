@@ -1,19 +1,14 @@
 import React from "react";
-import Button from "./Button";
 import SocialMediaButton from "./SocialMediaButton";
 import "../index.css";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-row bg-white justify-between border-sea border-2 rounded-full p-2 max-w-5xl gap-20">
-      <div className="flex flex-row space-x-4">
-        <Button text="Home" disabled={false}></Button>
-        <Button text="About Me" disabled={true}></Button>
-        <Button text="Projects" disabled={true}></Button>
-        <Button text="Writings" disabled={true}></Button>
-      </div>
-      <div className="flex flex-row space-x-4">
-        <Button text="Contact Me" disabled={true}></Button>
+    <div
+      className="flex flex-row bg-sea justify-between border-dark border-2 rounded-full p-2 gap-20"
+      style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
+    >
+      <div className="flex flex-row gap-4">
         <SocialMediaButton social={"linkedin"}></SocialMediaButton>
         <SocialMediaButton social={"github"}></SocialMediaButton>
         <SocialMediaButton social={"twitter"}></SocialMediaButton>

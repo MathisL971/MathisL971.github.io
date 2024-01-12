@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ScrollDownArrow.css"; // Make sure to adjust the path based on the actual location of your CSS file.
+import customDownArrow from "../assets/icons/custom-down-arrow.svg";
 
 const ScrollDownArrow = () => {
   const [atPageTop, setAtPageTop] = useState(true);
@@ -23,12 +24,11 @@ const ScrollDownArrow = () => {
   return (
     <section
       id="section05"
-      class={`demo ${atPageTop ? "" : "hidden"}`}
-      className="h-16"
+      className={`flex justify-center transition-opacity duration-300 ease-in ${
+        atPageTop ? "" : "opacity-0"
+      }`}
     >
-      <a href="#section06">
-        <span></span>
-      </a>
+      <img alt="" src={customDownArrow} className="w-12 h-12"></img>
     </section>
   );
 };

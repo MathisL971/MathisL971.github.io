@@ -38,7 +38,7 @@ const LatestProjects = () => {
         image = bazImage;
         break;
       }
-      case "Real Estate Club at McGill": {
+      case "McGill Real Estate Club": {
         image = recImage;
         break;
       }
@@ -86,7 +86,7 @@ const LatestProjects = () => {
             onHover={handleProjectImageChange}
           ></ProjectCard>
           <ProjectCard
-            title={"Real Estate Club at McGill"}
+            title={"McGill Real Estate Club"}
             description={
               "Redesigned McGill's real estate club's website using Squarespace"
             }

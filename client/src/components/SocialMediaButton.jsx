@@ -43,7 +43,7 @@ const SocialMediaButton = ({ social }) => {
 
   return (
     <button type="button" onClick={() => window.open(socialUrl, "_blank")}>
-      <div className="bg-sea rounded-full p-2.5 hover:bg-sky">
+      <div className="bg-sky rounded-full p-2 hover:bg-sky">
         {" "}
         <img alt="" src={logoImage} className="w-6"></img>
       </div>

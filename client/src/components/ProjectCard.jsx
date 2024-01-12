@@ -10,9 +10,11 @@ const ProjectCard = ({
 }) => {
   return (
     <div
-      onMouseOver={() => onHover(title)}
+      onMouseOver={() => {
+        onHover(title);
+      }}
       onClick={() => window.open(url, "_blank")}
-      className="flex flex-col gap-1 w-10/12 bg-white text-black border-2 border-neutral rounded-lg py-4 px-6 justify-center hover:text-white hover:w-11/12 hover:h-30 hover:px-8 hover:py-8 hover:bg-neutral hover:border-none hover:cursor-pointer"
+      className="flex flex-col gap-1 w-10/12 bg-white border-2 border-sea rounded-lg py-4 px-6 hover:bg-sea hover:border-none hover:cursor-pointer transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-200"
     >
       <div className="flex flex-row justify-between">
         <h3>{title}</h3>
