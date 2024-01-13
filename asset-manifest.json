@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ec35676e.css",
-    "main.js": "/static/js/main.f32bc11c.js",
+    "main.css": "/static/css/main.314fb727.css",
+    "main.js": "/static/js/main.03bfbaef.js",
     "static/media/article-pic.jpg": "/static/media/article-pic.66bb4e81b5cabf47391f.jpg",
     "static/media/mtl_map.png": "/static/media/mtl_map.99907bb4f7d47de08463.png",
     "static/media/react.svg": "/static/media/react.28f0f3d261c11eaf728e476c6159455a.svg",
@@ -17,11 +17,11 @@
     "static/media/insta-white.svg": "/static/media/insta-white.b1a78aa83b02c15a875fb9bc28ce4399.svg",
     "static/media/twitter-white.svg": "/static/media/twitter-white.f13da2a761dad7f4a34d8eeb83590b95.svg",
     "static/media/linkedin-white.svg": "/static/media/linkedin-white.e4179ef3f604ae28e825d036a74d90ee.svg",
-    "main.ec35676e.css.map": "/static/css/main.ec35676e.css.map",
-    "main.f32bc11c.js.map": "/static/js/main.f32bc11c.js.map"
+    "main.314fb727.css.map": "/static/css/main.314fb727.css.map",
+    "main.03bfbaef.js.map": "/static/js/main.03bfbaef.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec35676e.css",
-    "static/js/main.f32bc11c.js"
+    "static/css/main.314fb727.css",
+    "static/js/main.03bfbaef.js"
   ]
 }
