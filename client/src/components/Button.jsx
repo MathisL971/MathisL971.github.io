@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ text, styles, disabled, icon }) => {
+const Button = ({ text, styles, disabled, icon, onClick }) => {
   if (disabled) {
     return (
       <button
@@ -18,6 +18,7 @@ const Button = ({ text, styles, disabled, icon }) => {
     <button
       className="flex w-fit rounded-xl bg-sky text-white py-3 px-12 font-handjet text-xl gap-3"
       style={styles}
+      onClick={onClick}
     >
       {text}
       {icon && <img alt="" src={icon} className="w-5 h-5 self-center"></img>}

@@ -24,7 +24,7 @@ const ScrollDownArrow = () => {
   return (
     <section
       id="section05"
-      className={`flex justify-center transition-opacity duration-300 ease-in ${
+      className={`flex justify-center transition-opacity duration-500 ease-in ${
         atPageTop ? "" : "opacity-0"
       }`}
     >

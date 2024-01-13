@@ -2,15 +2,13 @@ import React from "react";
 
 import linkedInSvg from "../assets/icons/linkedin-white.svg";
 import twitterSvg from "../assets/icons/twitter-white.svg";
-import mediumSvg from "../assets/icons/medium-white.svg";
 import githubSVG from "../assets/icons/github-white.svg";
 import instaSvg from "../assets/icons/insta-white.svg";
 
 const linkedInUrl = "https://www.linkedin.com/in/mathis-lefranc/";
-const twitterUrl = "https://www.linkedin.com/in/mathis-lefranc/";
-const mediumUrl = "https://www.linkedin.com/in/mathis-lefranc/";
-const githubUrl = "https://www.linkedin.com/in/mathis-lefranc/";
-const instaUrl = "https://www.linkedin.com/in/mathis-lefranc/";
+const twitterUrl = "https://twitter.com/hedgiesTTG";
+const githubUrl = "https://github.com/MathisL971";
+const instaUrl = "https://www.instagram.com/mathisl.971/";
 
 const SocialMediaButton = ({ social }) => {
   let logoImage;
@@ -24,10 +22,6 @@ const SocialMediaButton = ({ social }) => {
     case "linkedin":
       logoImage = linkedInSvg;
       socialUrl = linkedInUrl;
-      break;
-    case "medium":
-      logoImage = mediumSvg;
-      socialUrl = mediumUrl;
       break;
     case "github":
       logoImage = githubSVG;

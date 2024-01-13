@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     colors: {
       light: "#CFEBFF",
-      neutral: "#427AA1",
+      neutral: "#198FEE",
       sky: "#00D7A3",
       sea: "#002D70",
       dark: "#3CAE8B",
@@ -18,6 +18,8 @@ module.exports = {
       electrolize: ["Electrolize", "sans-serif"],
       handjet: ["Handjet", "sans-serif"],
       rubik: ["Rubik Glitch", "sans-serif"],
+      ubuntu: ["Ubuntu Mono", "sans-serif"],
+      p2play: ["Press Start 2P", "sans-serif"],
     },
     fontSize: {
       xs: ".75rem",

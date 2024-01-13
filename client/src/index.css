@@ -18,7 +18,7 @@
   }
 
   p {
-    @apply text-base text-black font-handjet;
+    @apply text-base text-black font-rajdhani;
   }
   /* ... */
 }
