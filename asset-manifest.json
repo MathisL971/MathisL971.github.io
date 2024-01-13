@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.57d94259.css",
-    "main.js": "/static/js/main.8658c572.js",
-    "static/media/mre-home.png": "/static/media/mre-home.c81f93e9d8e99495657c.png",
-    "static/media/acid-capitalist-home.png": "/static/media/acid-capitalist-home.2fa403da91c0b8156f62.png",
-    "static/media/bazbar-home.png": "/static/media/bazbar-home.860c65f8707ead0e294d.png",
-    "static/media/kirstys-home.png": "/static/media/kirstys-home.1d54e949ff5cafe85cd5.png",
+    "main.css": "/static/css/main.ec35676e.css",
+    "main.js": "/static/js/main.f32bc11c.js",
     "static/media/article-pic.jpg": "/static/media/article-pic.66bb4e81b5cabf47391f.jpg",
     "static/media/mtl_map.png": "/static/media/mtl_map.99907bb4f7d47de08463.png",
-    "static/media/wix-black.svg": "/static/media/wix-black.f83003bf07cd24e146bfcf51968655da.svg",
-    "static/media/squarespace-black.svg": "/static/media/squarespace-black.687515a55fe5afbcca51147ea49833ff.svg",
+    "static/media/react.svg": "/static/media/react.28f0f3d261c11eaf728e476c6159455a.svg",
+    "static/media/mysql.svg": "/static/media/mysql.804d299fba95d7c361ebe03847461f49.svg",
+    "static/media/node.svg": "/static/media/node.08400dc92f8ebad70cb192d7b5c310c8.svg",
+    "static/media/Resume_January_2024_Mathis_Lefranc.pdf": "/static/media/Resume_January_2024_Mathis_Lefranc.0999085d7782bbe34dd1.pdf",
+    "static/media/tailwind.svg": "/static/media/tailwind.72e55391f4a6bae483e2890e6e208ae4.svg",
+    "static/media/open-in-new-window.svg": "/static/media/open-in-new-window.de6ebcb41e6d2b32eacb77f5c9c6b67a.svg",
+    "static/media/download-white.svg": "/static/media/download-white.0dd73f79ab5cf8e6666b975f7016d170.svg",
+    "static/media/custom-down-arrow.svg": "/static/media/custom-down-arrow.5c8b89b808017dd028b5cf2b6dbd692b.svg",
     "index.html": "/index.html",
     "static/media/github-white.svg": "/static/media/github-white.54a0ba4c65a434487d8fd4479d13bfd5.svg",
-    "static/media/medium-white.svg": "/static/media/medium-white.42c0cb3cd842c088f6f16bfab35ae2d3.svg",
     "static/media/insta-white.svg": "/static/media/insta-white.b1a78aa83b02c15a875fb9bc28ce4399.svg",
     "static/media/twitter-white.svg": "/static/media/twitter-white.f13da2a761dad7f4a34d8eeb83590b95.svg",
     "static/media/linkedin-white.svg": "/static/media/linkedin-white.e4179ef3f604ae28e825d036a74d90ee.svg",
-    "main.57d94259.css.map": "/static/css/main.57d94259.css.map",
-    "main.8658c572.js.map": "/static/js/main.8658c572.js.map"
+    "main.ec35676e.css.map": "/static/css/main.ec35676e.css.map",
+    "main.f32bc11c.js.map": "/static/js/main.f32bc11c.js.map"
   },
   "entrypoints": [
-    "static/css/main.57d94259.css",
-    "static/js/main.8658c572.js"
+    "static/css/main.ec35676e.css",
+    "static/js/main.f32bc11c.js"
   ]
 }
