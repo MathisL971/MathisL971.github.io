@@ -75,92 +75,244 @@ const App = () => {
 
 const ProjectCarousel = ({ projects = [] }) => {
   const scrollRef = useRef(null);
+  const contentRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isXlScreen, setIsXlScreen] = useState(false);
+  const scrollAnimationRef = useRef(null);
+  const lastTimeRef = useRef(0);
+  const scrollPositionRef = useRef(0);
+  const scrollSpeedRef = useRef(0.05); // pixels per millisecond
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef(null);
+  const startPosRef = useRef(0);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsXlScreen(window.innerWidth >= 1280); // 1280px is Tailwind's xl breakpoint
+      setIsXlScreen(window.innerWidth >= 1280);
     };
 
     // Initial check
     checkScreenSize();
-
-    // Add listener for resize events
-    window.addEventListener("resize", checkScreenSize);
-
-    // Clean up
-    return () => window.removeEventListener("resize", checkScreenSize);
+    
+    // Debounced resize handler
+    let resizeTimeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkScreenSize, 100);
+    };
+    
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimeout);
+    };
   }, []);
 
   useEffect(() => {
-    if (!scrollRef.current) return;
+    if (!scrollRef.current || !contentRef.current) return;
 
-    const scrollContainer = scrollRef.current;
-    let animationFrameId;
+    const scrollContainer = contentRef.current;
+    let isResetting = false;
+    
+    const animateScroll = (timestamp) => {
+      if (!lastTimeRef.current) lastTimeRef.current = timestamp;
+      
+      const deltaTime = timestamp - lastTimeRef.current;
+      lastTimeRef.current = timestamp;
+      
+      if (isHovered || isResetting) {
+        scrollAnimationRef.current = requestAnimationFrame(animateScroll);
+        return;
+      }
 
-    const scroll = () => {
-      // Don't scroll when hovered
-      if (!isHovered) {
-        if (isXlScreen) {
-          // Vertical scrolling (top to bottom)
-          scrollContainer.scrollTop += 1;
-
-          // Check if we've reached the bottom
-          if (
-            scrollContainer.scrollTop + scrollContainer.clientHeight >=
-            scrollContainer.scrollHeight
-          ) {
-            // Jump back to top
-            scrollContainer.scrollTop = 0;
-          }
+      // Calculate scroll increment based on elapsed time for consistent speed
+      const scrollIncrement = deltaTime * scrollSpeedRef.current;
+      scrollPositionRef.current += scrollIncrement;
+      
+      if (isXlScreen) {
+        // Vertical scrolling with transform for better performance
+        const maxScroll = scrollContainer.scrollHeight - scrollRef.current.clientHeight;
+        
+        // Apply scroll position
+        if (scrollPositionRef.current > maxScroll) {
+          // Handle reset for infinite loop
+          isResetting = true;
+          // Use CSS transition for smooth reset
+          scrollContainer.style.transition = 'transform 2s ease-out';
+          scrollContainer.style.transform = `translateY(0)`;
+          
+          setTimeout(() => {
+            // Remove transition after reset
+            scrollContainer.style.transition = 'none';
+            scrollPositionRef.current = 0;
+            isResetting = false;
+          }, 500);
         } else {
-          // Horizontal scrolling (right to left)
-          scrollContainer.scrollLeft += 1;
-
-          // Reset scroll position when it reaches the end
-          if (
-            scrollContainer.scrollLeft >=
-            scrollContainer.scrollWidth - scrollContainer.clientWidth
-          ) {
-            scrollContainer.scrollLeft = 0;
-          }
+          // Apply transform for smooth scrolling
+          scrollContainer.style.transform = `translateY(-${scrollPositionRef.current}px)`;
+        }
+      } else {
+        // Horizontal scrolling with transform
+        const maxScroll = scrollContainer.scrollWidth - scrollRef.current.clientWidth;
+        
+        if (scrollPositionRef.current > maxScroll) {
+          // Handle reset for infinite loop
+          isResetting = true;
+          scrollContainer.style.transition = 'transform 0.5s ease-out';
+          scrollContainer.style.transform = `translateX(0)`;
+          
+          setTimeout(() => {
+            scrollContainer.style.transition = 'none';
+            scrollPositionRef.current = 0;
+            isResetting = false;
+          }, 500);
+        } else {
+          // Apply transform for smooth scrolling
+          scrollContainer.style.transform = `translateX(-${scrollPositionRef.current}px)`;
         }
       }
 
-      animationFrameId = requestAnimationFrame(scroll);
+      scrollAnimationRef.current = requestAnimationFrame(animateScroll);
     };
 
-    // Start auto-scrolling immediately when component mounts
-    animationFrameId = requestAnimationFrame(scroll);
+    // Start animation
+    scrollAnimationRef.current = requestAnimationFrame(animateScroll);
 
+    // Clean up
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (scrollAnimationRef.current) {
+        cancelAnimationFrame(scrollAnimationRef.current);
+      }
     };
   }, [isHovered, isXlScreen]);
+
+  const handleMouseDown = (e) => {
+    if (!isHovered) return;
+    
+    setIsDragging(true);
+    dragStartRef.current = isXlScreen ? e.clientY : e.clientX;
+    startPosRef.current = scrollPositionRef.current;
+    
+    // Prevent text selection during drag
+    document.body.style.userSelect = 'none';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !contentRef.current) return;
+    
+    const currentPoint = isXlScreen ? e.clientY : e.clientX;
+    const diff = dragStartRef.current - currentPoint;
+    const newPosition = startPosRef.current + diff;
+    
+    // Ensure we don't scroll past boundaries
+    if (newPosition >= 0) {
+      scrollPositionRef.current = newPosition;
+      
+      if (isXlScreen) {
+        contentRef.current.style.transform = `translateY(-${newPosition}px)`;
+      } else {
+        contentRef.current.style.transform = `translateX(-${newPosition}px)`;
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    document.body.style.userSelect = '';
+  };
+
+  // Add touch support
+  const handleTouchStart = (e) => {
+    if (!isHovered) setIsHovered(true);
+    
+    dragStartRef.current = isXlScreen ? e.touches[0].clientY : e.touches[0].clientX;
+    startPosRef.current = scrollPositionRef.current;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !contentRef.current) return;
+    
+    const currentPoint = isXlScreen ? e.touches[0].clientY : e.touches[0].clientX;
+    const diff = dragStartRef.current - currentPoint;
+    const newPosition = startPosRef.current + diff;
+    
+    if (newPosition >= 0) {
+      scrollPositionRef.current = newPosition;
+      
+      if (isXlScreen) {
+        contentRef.current.style.transform = `translateY(-${newPosition}px)`;
+      } else {
+        contentRef.current.style.transform = `translateX(-${newPosition}px)`;
+      }
+    }
+    
+    // Prevent page scrolling
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    // Keep hovered state for a brief period to allow viewing
+    setTimeout(() => {
+      setIsHovered(false);
+    }, 1500);
+  };
+
+  // Reset scroll position and animation when screen size changes
+  useEffect(() => {
+    if (contentRef.current) {
+      scrollPositionRef.current = 0;
+      contentRef.current.style.transform = 'translate(0, 0)';
+      contentRef.current.style.transition = 'none';
+      lastTimeRef.current = 0;
+    }
+  }, [isXlScreen]);
+
+  // Add global mouse/touch event listeners
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd);
+    }
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isDragging, isXlScreen]);
 
   return (
     <div
       className="overflow-hidden shadow-md w-full xl:w-96"
+      ref={scrollRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
     >
       <div
-        ref={scrollRef}
-        className={`flex xl:flex-col overflow-x-scroll xl:overflow-x-hidden xl:overflow-y-scroll scrollbar-hide gap-6 xl:h-screen xl:py-10`}
-        style={{ 
-          scrollBehavior: "smooth",
-          msOverflowStyle: "none",
-          scrollbarWidth: "none" 
+        ref={contentRef}
+        className="flex xl:flex-col w-fit gap-6 px-8 sm:px-12 md:px-18 lg:px-24 xl:px-0 xl:py-16"
+        style={{
+          willChange: "transform", // Hint to browser for optimization
+          backfaceVisibility: "hidden", // Prevent flickering in some browsers
+          transform: "translate3d(0, 0, 0)", // Force GPU acceleration
+          cursor: isHovered ? "grab" : "auto",
+          touchAction: "none" // Prevent browser handling of touch events
         }}
       >
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
 
-        {/* Adding duplicates for seamless looping */}
+        {/* Duplicates for seamless looping */}
         {projects.map((project, index) => (
-          <ProjectCard key={"duplicate-" + index} project={project} />
+          <ProjectCard key={`duplicate-${index}`} project={project} />
         ))}
       </div>
     </div>
@@ -310,7 +462,7 @@ const ResumeDownloadButton = () => {
 
     const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = "resume.pdf";
+    link.download = "Resume_Mathis_Lefranc.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
