@@ -26,13 +26,13 @@ const App = () => {
   }
 
   return (
-    <div className="flex flex-col xl:flex-row h-screen bg-dark justify-center xl:px-32 xl:justify-between">
+    <div className="flex flex-col xl:flex-row h-screen bg-dark justify-center xl:px-32 xl:justify-between 2xl:justify-evenly xl:gap-10">
       <div className="flex flex-col justify-center gap-4 sm:gap-6 px-4 sm:px-12 md:px-18 lg:px-24 xl:px-0">
         <div className="flex flex-row items-center gap-4 sm:gap-6 md:gap-8">
           <img
             alt=""
             src="/profile.jpg"
-            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border-2 border-white"
+            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border-4 border-light"
           ></img>
           <div className="flex flex-col items-start justify-center flex-grow-0 xl:flex-grow">
             <h2 className="text-secondary">Full Stack Developer</h2>
@@ -94,38 +94,44 @@ const ProjectCarousel = ({ projects = [] }) => {
   }, []);
 
   useEffect(() => {
-    if (!scrollRef.current || isHovered) return;
+    if (!scrollRef.current) return;
 
     const scrollContainer = scrollRef.current;
     let animationFrameId;
 
     const scroll = () => {
-      if (isXlScreen) {
-        // Vertical scrolling (bottom to top)
-        scrollContainer.scrollTop += 1;
+      // Don't scroll when hovered
+      if (!isHovered) {
+        if (isXlScreen) {
+          // Vertical scrolling (top to bottom)
+          scrollContainer.scrollTop += 1;
 
-        // For vertical scrolling, we need to check if we've reached the top
-        if (scrollContainer.scrollTop <= 0) {
-          // Jump to the bottom without animation
-          scrollContainer.scrollTop =
-            scrollContainer.scrollHeight - scrollContainer.clientHeight;
-        }
-      } else {
-        // Horizontal scrolling (right to left)
-        scrollContainer.scrollLeft += 1;
+          // Check if we've reached the bottom
+          if (
+            scrollContainer.scrollTop + scrollContainer.clientHeight >=
+            scrollContainer.scrollHeight
+          ) {
+            // Jump back to top
+            scrollContainer.scrollTop = 0;
+          }
+        } else {
+          // Horizontal scrolling (right to left)
+          scrollContainer.scrollLeft += 1;
 
-        // Reset scroll position when it reaches the end
-        if (
-          scrollContainer.scrollLeft >=
-          scrollContainer.scrollWidth - scrollContainer.clientWidth
-        ) {
-          scrollContainer.scrollLeft = 0;
+          // Reset scroll position when it reaches the end
+          if (
+            scrollContainer.scrollLeft >=
+            scrollContainer.scrollWidth - scrollContainer.clientWidth
+          ) {
+            scrollContainer.scrollLeft = 0;
+          }
         }
       }
 
       animationFrameId = requestAnimationFrame(scroll);
     };
 
+    // Start auto-scrolling immediately when component mounts
     animationFrameId = requestAnimationFrame(scroll);
 
     return () => {
@@ -141,13 +147,18 @@ const ProjectCarousel = ({ projects = [] }) => {
     >
       <div
         ref={scrollRef}
-        className={`flex xl:flex-col overflow-x-scroll xl:overflow-x-hidden xl:overflow-y-scroll no-scrollbar gap-6 xl:h-screen xl:py-10`}
-        style={{ scrollBehavior: "smooth" }}
+        className={`flex xl:flex-col overflow-x-scroll xl:overflow-x-hidden xl:overflow-y-scroll scrollbar-hide gap-6 xl:h-screen xl:py-10`}
+        style={{ 
+          scrollBehavior: "smooth",
+          msOverflowStyle: "none",
+          scrollbarWidth: "none" 
+        }}
       >
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
 
+        {/* Adding duplicates for seamless looping */}
         {projects.map((project, index) => (
           <ProjectCard key={"duplicate-" + index} project={project} />
         ))}
@@ -161,9 +172,7 @@ const ProjectCard = ({ project }) => {
     <div className="bg-primary p-6 rounded-lg shadow-lg">
       <div className="flex justify-between flex-col xl:flex-row">
         <h3 className="text-lg font-semibold mb-2 text-dark">
-          {project.name.length <= 15
-            ? project.name
-            : project.name.slice(0, 15) + "..."}
+          {project.name}
         </h3>
         <div className="flex gap-2 mb-4">
           {false && (
