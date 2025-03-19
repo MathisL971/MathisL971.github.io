@@ -3,23 +3,16 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      light: "#CFEBFF",
-      neutral: "#198FEE",
-      sky: "#00D7A3",
-      sea: "#002D70",
-      dark: "#3CAE8B",
+      light: "#F0F5F9",
+      primary: "#C9D6DF",
+      secondary: "#52616B",
+      dark: "#1E2022",
       white: "#FFFFFF",
       black: "#000000",
     },
     fontFamily: {
-      barlow: ["Barlow", "sans-serif"],
-      rajdhani: ["Rajdhani", "sans-serif"],
-      ruda: ["Ruda", "sans-serif"],
-      electrolize: ["Electrolize", "sans-serif"],
-      handjet: ["Handjet", "sans-serif"],
-      rubik: ["Rubik Glitch", "sans-serif"],
-      ubuntu: ["Ubuntu Mono", "sans-serif"],
-      p2play: ["Press Start 2P", "sans-serif"],
+      oxygen: ["Oxygen", "sans-serif"],
+      sourceSans3: ["Source Sans 3", "sans-serif"],
     },
     fontSize: {
       xs: ".75rem",
@@ -80,12 +73,10 @@ module.exports = {
       140: "52rem",
     },
     extend: {
-      backgroundImage: {
-        "mtl-map":
-          "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/mtl_map.png')",
-        "blog-pic":
-          "url('/Users/mathis/Sync/web_dev/fullstack/react-portfolio-app/client/src/assets/article-pic.jpg')",
-      },
+      // backgroundImage: {
+      //   "mtl-map": "url('./client/src/assets/mtl_map.png')",
+      //   "blog-pic": "url('./client/src/assets/article-pic.jpg')",
+      // },
     },
   },
   plugins: [],

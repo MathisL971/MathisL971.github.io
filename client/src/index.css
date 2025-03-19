@@ -4,21 +4,21 @@
 
 @layer base {
   h1 {
-    @apply text-7xl text-sea font-rubik;
+    @apply text-4xl sm:text-5xl md:text-6xl font-oxygen font-bold;
   }
   h2 {
-    @apply text-4xl  text-sea font-rubik;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-oxygen;
   }
   h3 {
-    @apply text-2xl text-sea font-rubik;
+    @apply text-2xl font-oxygen;
   }
 
   h4 {
-    @apply text-lg text-black font-rubik;
+    @apply text-lg;
   }
 
   p {
-    @apply text-base text-black font-rajdhani;
+    @apply text-base md:text-lg font-light font-sourceSans3;
   }
   /* ... */
 }
