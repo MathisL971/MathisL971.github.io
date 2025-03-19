@@ -44,7 +44,7 @@ const App = () => {
             <span className="mr-3">🏝️</span>Raised on an island
           </p>
           <p>
-            <span className="mr-3">🇨🇦</span>Moved to the Great North
+            <span className="mr-3">🍁</span>Moved to the Great North
           </p>
           <p>
             <span className="mr-3">🎮</span>Played video games during 6 years to
