@@ -11,7 +11,20 @@ const App = () => {
     fetch("https://github-api-worker.corweb.io")
       .then((response) => response.json())
       .then((data) => {
-        setProjects(data);
+        const updatedData = data.map((project) => {
+          let demoUrl = null;
+
+          if (project.name === "t3-overlapp") {
+            demoUrl = "https://overlapp.vercel.app/";
+          }
+
+          return {
+            ...project,
+            demoUrl,
+          };
+        });
+
+        setProjects(updatedData);
       })
       .catch((error) => {
         console.log(error);
@@ -93,14 +106,14 @@ const ProjectCarousel = ({ projects = [] }) => {
 
     // Initial check
     checkScreenSize();
-    
+
     // Debounced resize handler
     let resizeTimeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(checkScreenSize, 100);
     };
-    
+
     window.addEventListener("resize", handleResize, { passive: true });
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -113,13 +126,13 @@ const ProjectCarousel = ({ projects = [] }) => {
 
     const scrollContainer = contentRef.current;
     let isResetting = false;
-    
+
     const animateScroll = (timestamp) => {
       if (!lastTimeRef.current) lastTimeRef.current = timestamp;
-      
+
       const deltaTime = timestamp - lastTimeRef.current;
       lastTimeRef.current = timestamp;
-      
+
       if (isHovered || isResetting) {
         scrollAnimationRef.current = requestAnimationFrame(animateScroll);
         return;
@@ -128,22 +141,23 @@ const ProjectCarousel = ({ projects = [] }) => {
       // Calculate scroll increment based on elapsed time for consistent speed
       const scrollIncrement = deltaTime * scrollSpeedRef.current;
       scrollPositionRef.current += scrollIncrement;
-      
+
       if (isXlScreen) {
         // Vertical scrolling with transform for better performance
-        const maxScroll = scrollContainer.scrollHeight - scrollRef.current.clientHeight;
-        
+        const maxScroll =
+          scrollContainer.scrollHeight - scrollRef.current.clientHeight;
+
         // Apply scroll position
         if (scrollPositionRef.current > maxScroll) {
           // Handle reset for infinite loop
           isResetting = true;
           // Use CSS transition for smooth reset
-          scrollContainer.style.transition = 'transform 2s ease-out';
+          scrollContainer.style.transition = "transform 2s ease-out";
           scrollContainer.style.transform = `translateY(0)`;
-          
+
           setTimeout(() => {
             // Remove transition after reset
-            scrollContainer.style.transition = 'none';
+            scrollContainer.style.transition = "none";
             scrollPositionRef.current = 0;
             isResetting = false;
           }, 500);
@@ -153,16 +167,17 @@ const ProjectCarousel = ({ projects = [] }) => {
         }
       } else {
         // Horizontal scrolling with transform
-        const maxScroll = scrollContainer.scrollWidth - scrollRef.current.clientWidth;
-        
+        const maxScroll =
+          scrollContainer.scrollWidth - scrollRef.current.clientWidth;
+
         if (scrollPositionRef.current > maxScroll) {
           // Handle reset for infinite loop
           isResetting = true;
-          scrollContainer.style.transition = 'transform 0.5s ease-out';
+          scrollContainer.style.transition = "transform 0.5s ease-out";
           scrollContainer.style.transform = `translateX(0)`;
-          
+
           setTimeout(() => {
-            scrollContainer.style.transition = 'none';
+            scrollContainer.style.transition = "none";
             scrollPositionRef.current = 0;
             isResetting = false;
           }, 500);
@@ -188,26 +203,26 @@ const ProjectCarousel = ({ projects = [] }) => {
 
   const handleMouseDown = (e) => {
     if (!isHovered) return;
-    
+
     setIsDragging(true);
     dragStartRef.current = isXlScreen ? e.clientY : e.clientX;
     startPosRef.current = scrollPositionRef.current;
-    
+
     // Prevent text selection during drag
-    document.body.style.userSelect = 'none';
+    document.body.style.userSelect = "none";
   };
 
   const handleMouseMove = (e) => {
     if (!isDragging || !contentRef.current) return;
-    
+
     const currentPoint = isXlScreen ? e.clientY : e.clientX;
     const diff = dragStartRef.current - currentPoint;
     const newPosition = startPosRef.current + diff;
-    
+
     // Ensure we don't scroll past boundaries
     if (newPosition >= 0) {
       scrollPositionRef.current = newPosition;
-      
+
       if (isXlScreen) {
         contentRef.current.style.transform = `translateY(-${newPosition}px)`;
       } else {
@@ -218,35 +233,39 @@ const ProjectCarousel = ({ projects = [] }) => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    document.body.style.userSelect = '';
+    document.body.style.userSelect = "";
   };
 
   // Add touch support
   const handleTouchStart = (e) => {
     if (!isHovered) setIsHovered(true);
-    
-    dragStartRef.current = isXlScreen ? e.touches[0].clientY : e.touches[0].clientX;
+
+    dragStartRef.current = isXlScreen
+      ? e.touches[0].clientY
+      : e.touches[0].clientX;
     startPosRef.current = scrollPositionRef.current;
     setIsDragging(true);
   };
 
   const handleTouchMove = (e) => {
     if (!isDragging || !contentRef.current) return;
-    
-    const currentPoint = isXlScreen ? e.touches[0].clientY : e.touches[0].clientX;
+
+    const currentPoint = isXlScreen
+      ? e.touches[0].clientY
+      : e.touches[0].clientX;
     const diff = dragStartRef.current - currentPoint;
     const newPosition = startPosRef.current + diff;
-    
+
     if (newPosition >= 0) {
       scrollPositionRef.current = newPosition;
-      
+
       if (isXlScreen) {
         contentRef.current.style.transform = `translateY(-${newPosition}px)`;
       } else {
         contentRef.current.style.transform = `translateX(-${newPosition}px)`;
       }
     }
-    
+
     // Prevent page scrolling
     e.preventDefault();
   };
@@ -263,8 +282,8 @@ const ProjectCarousel = ({ projects = [] }) => {
   useEffect(() => {
     if (contentRef.current) {
       scrollPositionRef.current = 0;
-      contentRef.current.style.transform = 'translate(0, 0)';
-      contentRef.current.style.transition = 'none';
+      contentRef.current.style.transform = "translate(0, 0)";
+      contentRef.current.style.transition = "none";
       lastTimeRef.current = 0;
     }
   }, [isXlScreen]);
@@ -272,17 +291,17 @@ const ProjectCarousel = ({ projects = [] }) => {
   // Add global mouse/touch event listeners
   useEffect(() => {
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      window.addEventListener('touchend', handleTouchEnd);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+      window.addEventListener("touchmove", handleTouchMove, { passive: false });
+      window.addEventListener("touchend", handleTouchEnd);
     }
-    
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging, isXlScreen]);
 
@@ -303,7 +322,7 @@ const ProjectCarousel = ({ projects = [] }) => {
           backfaceVisibility: "hidden", // Prevent flickering in some browsers
           transform: "translate3d(0, 0, 0)", // Force GPU acceleration
           cursor: isHovered ? "grab" : "auto",
-          touchAction: "none" // Prevent browser handling of touch events
+          touchAction: "none", // Prevent browser handling of touch events
         }}
       >
         {projects.map((project, index) => (
@@ -323,13 +342,11 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="bg-primary p-6 rounded-lg shadow-lg">
       <div className="flex justify-between flex-col xl:flex-row">
-        <h3 className="text-lg font-semibold mb-2 text-dark">
-          {project.name}
-        </h3>
+        <h3 className="text-lg font-semibold mb-2 text-dark">{project.name}</h3>
         <div className="flex gap-2 mb-4">
-          {false && (
+          {project.demoUrl && (
             <a
-              href={"https://" + project.name + ".corweb.io"}
+              href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800 text-sm flex items-center bg-white px-2 py-1 rounded"
